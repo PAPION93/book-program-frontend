@@ -1,0 +1,59 @@
+version: "3.7"
+
+services:
+  postgres:
+    container_name: db
+    image: postgres
+    environment:
+      - TZ=${TIMEZONE}
+      - POSTGRES_USER=${USER}
+      - POSTGRES_PASSWORD=${PASSWORD}
+      - POSTGRES_ROOT_PASSWORD=${ROOTPASSWORD}
+      - POSTGRES_DB=${DATABASE}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+      - ./pgconf:/etc/postgresql/postgres.conf
+    networks:
+      - frontend
+
+  pgadmin:
+    container_name: pgad
+    image: dpage/pgadmin4
+    environment:
+      - TZ=${TIMEZONE}
+      - PGADMIN_DEFAULT_EMAIL=${PGADMINEMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMINPASSWORD}
+    ports:
+      - 8088:80
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
+
+    networks:
+      - frontend
+
+  nginx:
+    container_name: proxy
+    build: ./proxy
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
+    # volumes:
+    #   - ./proxy/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - frontend
+
+  client:
+    container_name: client
+    build: ./react-app
+    volumes:
+      - "./react-app/:/app"
+      - "/app/node_modules"
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    driver: bridge

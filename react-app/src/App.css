@@ -1,0 +1,96 @@
+body {
+    font-family: 'GowunDodum-Regular', sans-serif;
+    font-size: 20px;
+}
+
+.App {
+    text-align: center;
+    margin: 10px;
+}
+
+.Date {
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    table-layout: fixed;
+}
+
+table th,
+table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.Cell {
+    border: 1px solid #ddd;
+    padding: 12px;
+    /* 셀의 내부 여백을 늘림 */
+    cursor: pointer;
+}
+
+.ChangingText {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    resize: none;
+    font-size: 16px;
+    /* 글자 크기를 조정 */
+}
+
+.Menu {
+    background-color: #4CAF50;
+    /* 바탕색 변경 */
+    color: #fff;
+    padding: 10px 0;
+    border-bottom: 2px solid #fff;
+    /* 하단 경계선 추가 */
+}
+
+.Menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    /* 메뉴 가운데 정렬 */
+}
+
+.Menu ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.Menu ul li:last-child {
+    margin-right: 0;
+}
+
+.Menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    /* 메뉴 간격 조정 */
+    border-radius: 5px;
+    /* 메뉴 모서리 둥글게 */
+    transition: background-color 0.3s;
+    /* 배경색 변화 시 부드럽게 전환 */
+}
+
+.Menu ul li a:hover {
+    background-color: #367a38;
+    /* 호버 시 배경색 변경 */
+}
